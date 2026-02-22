@@ -1,0 +1,456 @@
+---
+import Layout from "@/layouts/layout.astro";
+import AnimationComponent from "@/components/animation";
+import { buttonVariants } from "@/components/ui/button";
+import DiscordComponent from "@/components/discord";
+import {
+    Mouse,
+    MapPin,
+    Cake,
+    Youtube,
+    Github,
+    Linkedin,
+    Code2,
+    Globe,
+    Flame,
+} from "lucide-react";
+import CardComponent from "@/components/card";
+
+const birthDate = new Date("2007-06-12");
+
+const getAge = (date: Date) => {
+    const today = new Date();
+    let age = today.getFullYear() - date.getFullYear();
+
+    const hasHadBirthdayThisYear =
+        today.getMonth() > date.getMonth() ||
+        (today.getMonth() === date.getMonth() &&
+            today.getDate() >= date.getDate());
+
+    if (!hasHadBirthdayThisYear) {
+        age--;
+    }
+
+    return age;
+};
+
+const age = getAge(birthDate);
+---
+
+<Layout>
+    <div class="container mx-auto lg:py-0 px-8 lg:px-14">
+        <!-- main -->
+        <section
+            id="home"
+            class="lg:min-h-[calc(100vh-8rem)] lg:items-center lg:flex lg:justify-between space-y-14 lg:space-y-0"
+        >
+            <div class="text-center lg:text-start space-y-6">
+                <div>
+                    <AnimationComponent
+                        initial={{ opacity: 0, x: -100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        client:load
+                    >
+                        <h1 class="text-5xl md:text-6xl font-bold">
+                            Hello, I’m <span
+                                class="font-light italic relative inline-block px-4 py-1 -rotate-3 rounded-lg bg-linear-to-r from-violet-400 via-purple-500 to-violet-600 shadow-[0_0_40px_-5px_rgba(139,92,246,0.6)]"
+                                >k0am0</span
+                            >!
+                        </h1>
+                    </AnimationComponent>
+                </div>
+
+                <div>
+                    <AnimationComponent
+                        initial={{ opacity: 0, x: -80 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{
+                            duration: 0.6,
+                            delay: 0.4,
+                            ease: "easeOut",
+                        }}
+                        client:load
+                    >
+                        <div class="flex items-center gap-4">
+                            <div class="flex items-center gap-2">
+                                <MapPin className="text-muted-foreground" />
+                                <p
+                                    class="text-muted-foreground mx-auto lg:mx-0"
+                                >
+                                    United States, Michigan
+                                </p>
+                            </div>
+                            <div class="h-4 border border-r border-purple-500">
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <Cake className="text-muted-foreground" />
+                                <p
+                                    class="text-muted-foreground mx-auto lg:mx-0"
+                                >
+                                    June 12, 2007 ({age} years old)
+                                </p>
+                            </div>
+                        </div>
+                    </AnimationComponent>
+                </div>
+
+                <div>
+                    <AnimationComponent
+                        initial={{ opacity: 0, x: -80 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{
+                            duration: 0.6,
+                            delay: 0.8,
+                            ease: "easeOut",
+                        }}
+                        client:load
+                    >
+                        <div class="space-y-4 md:space-y-0 md:space-x-2">
+                            <a
+                                href="https://www.youtube.com/@juuupy"
+                                target="_blank"
+                                class={`cursor-pointer ${buttonVariants({ variant: "outline" })}`}
+                                ><Youtube className="text-accent-foreground" />
+                                <span>YouTube</span></a
+                            >
+                            <a
+                                href="https://github.com/k0am0"
+                                target="_blank"
+                                class={`cursor-pointer ${buttonVariants({ variant: "outline" })}`}
+                                ><Github className="text-accent-foreground" />
+                                <p>GitHub</p></a
+                            >
+                            <a
+                                href="https://www.linkedin.com/in/teo-white-a155a2394/"
+                                target="_blank"
+                                class={`cursor-pointer ${buttonVariants({ variant: "outline" })}`}
+                                ><Linkedin className="text-accent-foreground" />
+                                <span>LinkedIn</span></a
+                            >
+                        </div>
+                    </AnimationComponent>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-[40%]">
+                <AnimationComponent
+                    initial={{ opacity: 0, x: 100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
+                    client:load
+                >
+                    <DiscordComponent client:load />
+                </AnimationComponent>
+            </div>
+        </section>
+
+        <!-- bounce bounce lul -->
+        <div class="flex justify-center items-center">
+            <AnimationComponent
+                initial={{ opacity: 0, y: -50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.4, ease: "easeOut" }}
+                client:load
+            >
+                <Mouse className="text-muted-foreground animate-bounce" />
+            </AnimationComponent>
+        </div>
+
+        <!-- about me -->
+        <section id="about-me" class="mt-60 mb-60 mx-auto w-[50%]">
+            <AnimationComponent
+                initial={{ opacity: 0, x: -100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                client:load
+            >
+                <h2 class="text-3xl md:text-4xl font-bold text-center">
+                    About Me
+                </h2>
+                <div
+                    class="h-1 w-24 mx-auto rounded-lg bg-linear-to-r from-violet-400 via-purple-500 to-violet-600 shadow-[0_0_40px_-5px_rgba(139,92,246,0.6)]"
+                >
+                </div>
+            </AnimationComponent>
+
+            <div class="mt-10 space-y-4">
+                <AnimationComponent
+                    initial={{ opacity: 0, x: -100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                    client:load
+                >
+                    <p class="text-muted-foreground">
+                        I’m an {age} year old developer from the United States who
+                        started coding at around 13, mainly just for fun.
+                        <br />
+                        I first got into it through my PS3 after jailbreaking it and
+                        wanting to make my own cheats instead of using other people’s.
+                        That experience of figuring things out on my own and slowly
+                        getting stuff to work is what made me genuinely enjoy coding,
+                        and it’s been something I’ve stuck with ever since.
+                    </p>
+                </AnimationComponent>
+
+                <div class="mt-10 flex items-start gap-4">
+                    <div class="w-full">
+                        <AnimationComponent
+                            initial={{ opacity: 0, x: -100 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{
+                                duration: 0.6,
+                                delay: 0.8,
+                                ease: "easeOut",
+                            }}
+                            client:load
+                        >
+                            <CardComponent className="p-4">
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="p-3 rounded-lg bg-linear-to-r from-violet-400/20 via-purple-500/20 to-violet-600/20"
+                                    >
+                                        <Code2 className="text-violet-400" />
+                                    </div>
+
+                                    <div>
+                                        <h3 class="text-xl font-semibold">
+                                            Languages
+                                        </h3>
+                                        <p
+                                            class="text-muted-foreground text-sm"
+                                        >
+                                            TypeScript, JavaScript, C++, HTML,
+                                            CSS
+                                        </p>
+                                    </div>
+                                </div>
+                            </CardComponent>
+                        </AnimationComponent>
+                    </div>
+                    <div class="w-full">
+                        <AnimationComponent
+                            initial={{ opacity: 0, x: -100 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{
+                                duration: 0.6,
+                                delay: 1,
+                                ease: "easeOut",
+                            }}
+                            client:load
+                        >
+                            <CardComponent className="p-4">
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="p-3 rounded-lg bg-linear-to-r from-violet-400/20 via-purple-500/20 to-violet-600/20"
+                                    >
+                                        <Globe className="text-violet-400" />
+                                    </div>
+
+                                    <div>
+                                        <h3 class="text-xl font-semibold">
+                                            Frameworks
+                                        </h3>
+                                        <p
+                                            class="text-muted-foreground text-sm"
+                                        >
+                                            React, Astro, Next.js
+                                        </p>
+                                    </div>
+                                </div>
+                            </CardComponent>
+                        </AnimationComponent>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-full">
+                        <AnimationComponent
+                            initial={{ opacity: 0, x: -100 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{
+                                duration: 0.6,
+                                delay: 1.2,
+                                ease: "easeOut",
+                            }}
+                            client:load
+                        >
+                            <CardComponent className="p-4">
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="p-3 rounded-lg bg-linear-to-r from-violet-400/20 via-purple-500/20 to-violet-600/20"
+                                    >
+                                        <Flame className="text-violet-400" />
+                                    </div>
+
+                                    <div>
+                                        <h3 class="text-xl font-semibold">
+                                            Stuff I do in my free time
+                                        </h3>
+                                        <p
+                                            class="text-muted-foreground text-sm"
+                                        >
+                                            Ride my dirt bike, hang out with
+                                            friends, and make music.
+                                        </p>
+                                    </div>
+                                </div>
+                            </CardComponent>
+                        </AnimationComponent>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- projects -->
+        <section id="projects" class="mt-60 mb-60 mx-auto w-[50%]">
+            <AnimationComponent
+                initial={{ opacity: 0, x: -100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                client:load
+            >
+                <h2 class="text-3xl md:text-4xl font-bold text-center">
+                    Projects
+                </h2>
+                <div
+                    class="h-1 w-24 mx-auto rounded-lg bg-linear-to-r from-violet-400 via-purple-500 to-violet-600 shadow-[0_0_40px_-5px_rgba(139,92,246,0.6)]"
+                >
+                </div>
+            </AnimationComponent>
+
+            <div class="mt-12 relative">
+                <AnimationComponent
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{
+                        duration: 0.6,
+                        ease: "easeOut",
+                    }}
+                    client:load
+                >
+                    <div
+                        class="absolute left-[12px] top-2 bottom-2 w-px
+                                   bg-linear-to-b from-violet-500/80 via-purple-500/60 to-violet-500/20"
+                    >
+                    </div>
+                </AnimationComponent>
+
+                <div class="space-y-8">
+                    <div>
+                        <AnimationComponent
+                            initial={{ opacity: 0, x: -80 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{
+                                duration: 0.6,
+                                delay: 0.4,
+                                ease: "easeOut",
+                            }}
+                            client:load
+                        >
+                            <div class="flex items-start gap-6">
+                                <div class="flex flex-col items-center">
+                                    <div
+                                        class="p-3 rounded-lg bg-linear-to-r from-violet-400 via-purple-500 to-violet-600 shadow-[0_0_30px_-10px_rgba(139,92,246,0.6)]"
+                                    >
+                                    </div>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <p class="text-sm text-muted-foreground">
+                                        2024 - 2025
+                                    </p>
+                                    <h3 class="text-xl font-semibold">
+                                        Acid Solutions
+                                    </h3>
+                                    <p class="text-muted-foreground max-w-2xl">
+                                        A Fortnite cheat written in C++
+                                        featuring a fully custom DirectX GUI and
+                                        an EFI kernel driver. Built from the
+                                        ground up and grew to over 500 active
+                                        users. Stopped after a year because it
+                                        became too much for me, as I was the
+                                        only person.
+                                    </p>
+                                </div>
+                            </div>
+                        </AnimationComponent>
+                    </div>
+
+                    <div>
+                        <AnimationComponent
+                            initial={{ opacity: 0, x: -80 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{
+                                duration: 0.6,
+                                delay: 0.8,
+                                ease: "easeOut",
+                            }}
+                            client:load
+                        >
+                            <div class="flex items-start gap-6">
+                                <div class="flex flex-col items-center">
+                                    <div
+                                        class="p-3 rounded-lg bg-linear-to-r from-violet-400 via-purple-500 to-violet-600 shadow-[0_0_30px_-10px_rgba(139,92,246,0.6)]"
+                                    >
+                                    </div>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <p class="text-sm text-muted-foreground">
+                                        2025 - Present
+                                    </p>
+                                    <h3 class="text-xl font-semibold">
+                                        Sparkle
+                                    </h3>
+                                    <p class="text-muted-foreground max-w-2xl">
+                                        A Discord bot that generates images of
+                                        cosmetics you own and shows account
+                                        details. Also lets you equip any
+                                        cosmetic in your party by modifying the
+                                        games party meta from an api.
+                                    </p>
+                                </div>
+                            </div>
+                        </AnimationComponent>
+                    </div>
+
+                    <div>
+                        <AnimationComponent
+                            initial={{ opacity: 0, x: -80 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{
+                                duration: 0.6,
+                                delay: 1,
+                                ease: "easeOut",
+                            }}
+                            client:load
+                        >
+                            <div class="flex items-start gap-6">
+                                <div class="flex flex-col items-center">
+                                    <div
+                                        class="p-3 rounded-lg bg-linear-to-r from-violet-400 via-purple-500 to-violet-600 shadow-[0_0_30px_-10px_rgba(139,92,246,0.6)]"
+                                    >
+                                    </div>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <p class="text-sm text-muted-foreground">
+                                        2026 - Present
+                                    </p>
+                                    <h3 class="text-xl font-semibold">
+                                        Personal Portfolio
+                                    </h3>
+                                    <p class="text-muted-foreground max-w-2xl">
+                                        My personal website built with Astro,
+                                        React, TailwindCSS, Shadcn UI, Lanyard
+                                        and a stripped version of dcdn.dstn.to.
+                                    </p>
+                                </div>
+                            </div>
+                        </AnimationComponent>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</Layout>

@@ -1,0 +1,25 @@
+* {
+    transition:
+        background-color 300ms ease,
+        border-color 300ms ease,
+        color 300ms ease,
+        fill 300ms ease,
+        stroke 300ms ease;
+}
+
+html {
+    scroll-behavior: smooth;
+    transition:
+        background-color 300ms ease,
+        color 300ms ease;
+}
+
+.grid {
+    position: absolute;
+    inset: 0;
+    background-size: 60px 60px;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    z-index: -2;
+}

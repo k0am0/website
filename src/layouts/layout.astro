@@ -1,0 +1,35 @@
+---
+import "@/styles/global.css";
+import "@/styles/main.css";
+import NavbarComponent from "@/components/navbar";
+import FooterComponent from "@/components/footer.astro";
+
+interface Props {
+    subTitle?: string;
+}
+
+const { subTitle } = Astro.props;
+---
+
+<html lang="en" class="dark">
+    <head>
+        <meta charset="utf-8" />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="https://cdn.discordapp.com/avatars/180300895764873216/120d610bdc5aa93cbb3a4cd4debf56d5.png?size=64"
+        />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>k0am0 {subTitle ? `| ${subTitle}` : ""}</title>
+    </head>
+    <body class="relative overflow-x-hidden">
+        <div class="grid"></div>
+
+        <NavbarComponent client:load />
+
+        <slot />
+
+        <FooterComponent />
+    </body>
+</html>
