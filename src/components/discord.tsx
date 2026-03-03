@@ -52,10 +52,15 @@ const formatBio = (bio?: string | null): string => {
     });
 };
 
-const resolveDiscordAsset = (image?: string | null): string => {
+const resolveDiscordAsset = (
+  applicationId?: string | null,
+  image?: string | null,
+): string => {
   if (!image) {
     return "";
   }
+
+  const snowflakeRegex = /^\d{17,19}$/;
 
   if (image.startsWith("mp:external/")) {
     const httpsIndex = image.indexOf("/https/");
@@ -63,6 +68,10 @@ const resolveDiscordAsset = (image?: string | null): string => {
       const after = image.slice(httpsIndex + "/https/".length);
       return `https://${after}`;
     }
+  }
+
+  if (snowflakeRegex.test(image)) {
+    return `https://cdn.discordapp.com/app-assets/${applicationId}/${image}.png?size=160`;
   }
 
   return image;
@@ -284,7 +293,10 @@ export default function DiscordComponent() {
                 <TooltipTrigger asChild>
                   {activity?.assets?.large_image && (
                     <img
-                      src={resolveDiscordAsset(activity?.assets?.large_image)}
+                      src={resolveDiscordAsset(
+                        activity?.application_id,
+                        activity?.assets?.large_image,
+                      )}
                       alt={activity?.name}
                       className="h-18 w-18 rounded-md object-cover"
                       draggable={false}

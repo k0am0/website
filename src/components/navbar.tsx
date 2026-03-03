@@ -5,7 +5,7 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import AnimationComponent from "@/components/animation";
-import { House, Github, Sun, Moon, Code2, CircleUser } from "lucide-react";
+import { Github, Sun, Moon } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -25,13 +25,6 @@ export default function NavbarComponent() {
       root.classList.remove("dark");
     }
   }, [theme]);
-
-  const scrollIntoView = (elementId: string) => {
-    const element = document.getElementById(elementId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <div className="container mx-auto flex items-center justify-between py-4 px-4">
@@ -59,64 +52,7 @@ export default function NavbarComponent() {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <NavigationMenuLink asChild>
-                    <a
-                      className="cursor-pointer"
-                      onClick={() => scrollIntoView("home")}
-                    >
-                      <House className="text-accent-foreground" />
-                    </a>
-                  </NavigationMenuLink>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Home</p>
-                </TooltipContent>
-              </Tooltip>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <NavigationMenuLink asChild>
-                    <a
-                      className="cursor-pointer"
-                      onClick={() => scrollIntoView("about-me")}
-                    >
-                      <CircleUser className="text-accent-foreground" />
-                    </a>
-                  </NavigationMenuLink>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>About Me</p>
-                </TooltipContent>
-              </Tooltip>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <NavigationMenuLink asChild>
-                    <a
-                      className="cursor-pointer"
-                      onClick={() => scrollIntoView("projects")}
-                    >
-                      <Code2 className="text-accent-foreground" />
-                    </a>
-                  </NavigationMenuLink>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Projects</p>
-                </TooltipContent>
-              </Tooltip>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <NavigationMenuLink asChild>
-                    <a
-                      href="https://github.com/ophx/personal-website"
-                      target="_blank"
-                    >
+                    <a href="https://github.com/k0am0/website" target="_blank">
                       <Github className="text-accent-foreground" />
                     </a>
                   </NavigationMenuLink>
